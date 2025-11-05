@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>قلیان‌سرای روشن</title>
+  <style>
+    :root {
+      --main-color: #4CAF50;
+      --accent-color: #fffbe9;
+      --highlight-color: #ffb74d;
+      --text-color: #333;
+    }
+
+    body {
+      font-family: "Vazir", sans-serif;
+      margin: 0;
+      background-color: var(--accent-color);
+      color: var(--text-color);
+      scroll-behavior: smooth;
+    }
+
+    header {
+      background-color: var(--main-color);
+      color: white;
+      padding: 15px 20px;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
+
+    .top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .music-btn {
+      background-color: var(--highlight-color);
+      color: #333;
+      border: none;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .music-btn:hover {
+      background-color: #ffd480;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 10px;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      color: var(--highlight-color);
+    }
+
+    section {
+      padding: 40px 20px;
+      text-align: center;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 1s ease, transform 1s ease;
+    }
+
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    h1, h2 {
+      color: var(--main-color);
+    }
+
+    .menu {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .item {
+      background-color: white;
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      padding: 15px;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    }
+
+    .price {
+      color: var(--main-color);
+      font-weight: bold;
+      margin-top: 5px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    input, textarea {
+      width: 80%;
+      max-width: 400px;
+      padding: 10px;
+      border: 2px solid var(--main-color);
+      border-radius: 10px;
+      outline: none;
+      font-family: inherit;
+    }
+
+    button[type="submit"] {
+      background-color: var(--main-color);
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button[type="submit"]:hover {
+      background-color: var(--highlight-color);
+      color: #333;
+    }
+
+    footer {
+      background-color: var(--main-color);
+      color: white;
+      text-align: center;
+      padding: 20px 10px;
+      margin-top: 30px;
+      position: relative;
+    }
+
+    #backToTop {
+      position: fixed;
+      bottom: 30px;
+      left: 30px;
+      background-color: var(--main-color);
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 45px;
+      height: 45px;
+      cursor: pointer;
+      font-size: 20px;
+      display: none;
+      transition: 0.3s;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.3);
+    }
+
+    #backToTop:hover {
+      background-color: var(--highlight-color);
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="top-bar">
+      <h1>قلیان‌سرای روشن</h1>
+      <button class="music-btn" id="musicBtn">🎵 پخش موزیک</button>
+    </div>
+    <nav>
+      <a href="#hookah-menu">منوی قلیان</a>
+      <a href="#breakfast-menu">منوی صبحانه</a>
+      <a href="#contact">ارتباط با ما</a>
+    </nav>
+  </header>
+
+  <audio id="bgMusic" loop preload="auto">
+    <source src="Kimsesiz (Forlorn).mp3" type="audio/mpeg">
+    مرورگر شما از پخش آهنگ پشتیبانی نمی‌کند.
+  </audio>
+
+  <section id="hookah-menu">
+    <h2>منوی قلیان</h2>
+    <div class="menu">
+      <div class="item">هاوایی (آناناس، نارگیل، دراگون)<div class="price">100 هزار تومان</div></div>
+      <div class="item">آریا (انگور سیاه، انار، آدامس)<div class="price">100 هزار تومان</div></div>
+      <div class="item">دراگون<div class="price">100 هزار تومان</div></div>
+      <div class="item">لاو<div class="price">100 هزار تومان</div></div>
+      <div class="item">موسکو<div class="price">100 هزار تومان</div></div>
+      <div class="item">نعنایخ<div class="price">100 هزار تومان</div></div>
+      <div class="item">دوسیب اماراتی<div class="price">100 هزار تومان</div></div>
+      <div class="item">بلوبری<div class="price">100 هزار تومان</div></div>
+      <div class="item">هندوانه یخ<div class="price">100 هزار تومان</div></div>
+      <div class="item">تمشک بستنی<div class="price">100 هزار تومان</div></div>
+      <div class="item">کاپوچینو<div class="price">100 هزار تومان</div></div>
+      <div class="item">لیمو نعنا<div class="price">100 هزار تومان</div></div>
+      <div class="item">دوسیب آلبالو<div class="price">100 هزار تومان</div></div>
+      <div class="item">آدامس<div class="price">100 هزار تومان</div></div>
+      <div class="item">دوسیب<div class="price">100 هزار تومان</div></div>
+      <div class="item">دژاوو<div class="price">100 هزار تومان</div></div>
+      <div class="item">آدامس کوهی<div class="price">100 هزار تومان</div></div>
+      <div class="item">لیمو ترش<div class="price">100 هزار تومان</div></div>
+      <div class="item">انگور سیاه<div class="price">100 هزار تومان</div></div>
+      <div class="item">پرتقال نعنا<div class="price">100 هزار تومان</div></div>
+      <div class="item">آدامس نعنا<div class="price">100 هزار تومان</div></div>
+      <div class="item">گل<div class="price">100 هزار تومان</div></div>
+      <div class="item">لیدی<div class="price">100 هزار تومان</div></div>
+      <div class="item">Lv69<div class="price">100 هزار تومان</div></div>
+      <div class="item">جوکر<div class="price">100 هزار تومان</div></div>
+      <div class="item">شلیل<div class="price">100 هزار تومان</div></div>
+      <div class="item">گل شلیل<div class="price">100 هزار تومان</div></div>
+      <div class="item">آلبالو<div class="price">100 هزار تومان</div></div>
+      <div class="item">آدامس دارچین<div class="price">100 هزار تومان</div></div>
+      <div class="item">ترکیب ویژه<div class="price">100 هزار تومان</div></div>
+    </div>
+  </section>
+
+  <section id="breakfast-menu">
+    <h2>منوی صبحانه</h2>
+    <div class="menu">
+      <div class="item">🥓 سوسیس و تخم‌مرغ (۲ سوسیس + ۲ تخم‌مرغ)<div class="price">100 هزار تومان</div></div>
+      <div class="item">🍅 املت<div class="price">90 هزار تومان</div></div>
+      <div class="item">🐟 تن ماهی و تخم‌مرغ<div class="price">150 هزار تومان</div></div>
+      <div class="item">🫘 لوبیا و تخم‌مرغ<div class="price">150 هزار تومان</div></div>
+      <div class="item">🍳 نیمرو خالی<div class="price">50 هزار تومان</div></div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>ارتباط با ما</h2>
+    <p>📍 آدرس: آخر خیابان رودکی، روبه‌روی خیابان متین، جنب کوروش  
+      (<a href="https://maps.app.goo.gl/dKwKhCToymbLPpm98" target="_blank">مشاهده در نقشه</a>)
+    </p>
+    <p>📞 شماره تماس: +98 992 245 6503</p>
+    <p>📸 اینستاگرام: <a href="https://instagram.com/coffe.roshan" target="_blank">@coffe.roshan</a></p>
+
+    <form>
+      <input type="text" placeholder="نام شما" required>
+      <input type="email" placeholder="ایمیل" required>
+      <textarea rows="4" placeholder="پیام شما..." required></textarea>
+      <button type="submit">ارسال پیام</button>
+    </form>
+  </section>
+
+  <footer>
+    <p>© 2025 قلیان‌سرای روشن - تمامی حقوق محفوظ است</p>
+  </footer>
+
+  <button id="backToTop">⬆️</button>
+
+  <script>
+    const music = document.getElementById("bgMusic");
+    const btn = document.getElementById("musicBtn");
+    let playing = false;
+
+    btn.addEventListener("click", () => {
+      if (!playing) {
+        music.play().catch(err => console.log("پخش نشد:", err));
+        btn.textContent = "⏸️ توقف موزیک";
+        playing = true;
+      } else {
+        music.pause();
+        btn.textContent = "🎵 پخش موزیک";
+        playing = false;
+      }
+    });
+
+    // انیمیشن اسکرول
+    const sections = document.querySelectorAll("section");
+    const revealOnScroll = () => {
+      sections.forEach(sec => {
+        const rect = sec.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 100) {
+          sec.classList.add("visible");
+        }
+      });
+    };
+    window.addEventListener("scroll", revealOnScroll);
+    revealOnScroll();
+
+    // دکمه برگشت به بالا
+    const topBtn = document.getElementById("backToTop");
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 300) topBtn.style.display = "block";
+      else topBtn.style.display = "none";
+    });
+    topBtn.addEventListener("click", () => window.scrollTo({top: 0, behavior: "smooth"}));
+  </script>
+</body>
+</html>
